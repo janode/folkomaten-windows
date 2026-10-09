@@ -1,9 +1,8 @@
-<h1 align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="docs/logo-dark.png">
-    <img src="docs/logo.png" alt="Folkomaten for Windows" height="112">
-  </picture>
-</h1>
+<p align="center">
+  <img src="docs/folkomaten.png" alt="Folkomaten" width="240">
+</p>
+
+<h1 align="center">Folkomaten for Windows</h1>
 
 <p align="center">
   <a href="https://github.com/janode/folkomaten-windows/releases"><img alt="Release" src="https://img.shields.io/github/v/release/janode/folkomaten-windows?sort=semver"></a>
