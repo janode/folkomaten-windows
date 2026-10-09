@@ -1,5 +1,12 @@
 # Folkomaten for Windows
 
+[![Release](https://img.shields.io/github/v/release/janode/folkomaten-windows?sort=semver)](https://github.com/janode/folkomaten-windows/releases)
+[![Tester](https://img.shields.io/github/actions/workflow/status/janode/folkomaten-windows/ci.yml?branch=main&label=tester)](https://github.com/janode/folkomaten-windows/actions/workflows/ci.yml)
+[![Status](https://img.shields.io/badge/status-active-brightgreen)](https://github.com/janode/folkomaten-windows)
+[![Windows](https://img.shields.io/badge/Windows-10%2B-0078D4)](https://www.microsoft.com/windows)
+[![.NET](https://img.shields.io/badge/.NET-10-512BD4?logo=dotnet&logoColor=white)](https://dotnet.microsoft.com/)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
+
 En liten app i systemstatusfeltet som lar deg kopiere fødselsnummeret til en BankID-testbruker med ett klikk. De samme brukerne finnes i Det Sentrale Folkeregisterets (DSF) testdatabase, så de virker både mot BankID preprod og mot testmiljøer som slår opp i folkeregisteret.
 
 Dette er en Windows-utgave av [Folkomaten](https://github.com/olefredrik/Folkomaten) for macOS, laget av Ole Fredrik Lie. Funksjonene er de samme; koden er skrevet på nytt i C# og WPF.
