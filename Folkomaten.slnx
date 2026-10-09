@@ -1,0 +1,16 @@
+<Solution>
+  <Folder Name="/Solution items/">
+    <File Path=".editorconfig" />
+    <File Path=".gitattributes" />
+    <File Path="global.json" />
+    <File Path="LICENSE" />
+    <File Path="README.md" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/Folkomaten.Core/Folkomaten.Core.csproj" />
+    <Project Path="src/Folkomaten/Folkomaten.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Folkomaten.Tests/Folkomaten.Tests.csproj" />
+  </Folder>
+</Solution>

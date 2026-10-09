@@ -1,0 +1,62 @@
+name: Release
+
+# Lag en release ved å tagge: git tag v1.2.3 && git push origin v1.2.3
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Versjon fra tag
+        shell: pwsh
+        run: '"VERSION=$($env:GITHUB_REF_NAME.TrimStart(''v''))" >> $env:GITHUB_ENV'
+
+      - name: Bygg
+        run: dotnet build Folkomaten.slnx -c Release -warnaserror -p:Version=${{ env.VERSION }}
+
+      - name: Test
+        run: dotnet test --project tests/Folkomaten.Tests/Folkomaten.Tests.csproj -c Release --no-build
+
+      # Én fil som virker uten installert .NET (rundt 75 MB).
+      - name: Publiser Folkomaten-win-x64.exe
+        shell: pwsh
+        run: |
+          dotnet publish src/Folkomaten/Folkomaten.csproj -c Release -r win-x64 --self-contained true `
+            -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -p:EnableCompressionInSingleFile=true -p:DebugType=none `
+            -p:Version=${{ env.VERSION }} -o publish/standalone
+          Move-Item publish/standalone/Folkomaten.exe publish/Folkomaten-win-x64.exe
+
+      # Liten fil som trenger .NET 10 Desktop Runtime.
+      - name: Publiser Folkomaten-win-x64-lite.exe
+        shell: pwsh
+        run: |
+          dotnet publish src/Folkomaten/Folkomaten.csproj -c Release -r win-x64 --self-contained false `
+            -p:PublishSingleFile=true -p:DebugType=none `
+            -p:Version=${{ env.VERSION }} -o publish/lite
+          Move-Item publish/lite/Folkomaten.exe publish/Folkomaten-win-x64-lite.exe
+
+      # Sjekksummer så nedlastingen kan verifiseres.
+      - name: Sjekksummer
+        shell: pwsh
+        run: |
+          Get-ChildItem publish/*.exe | ForEach-Object { "$((Get-FileHash $_ -Algorithm SHA256).Hash.ToLower())  $($_.Name)" } |
+            Set-Content publish/SHA256SUMS.txt
+
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            publish/Folkomaten-win-x64.exe
+            publish/Folkomaten-win-x64-lite.exe
+            publish/SHA256SUMS.txt
+          generate_release_notes: true

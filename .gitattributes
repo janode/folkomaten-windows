@@ -1,0 +1,6 @@
+# Git lagrer alle tekstfiler med LF, uansett core.autocrlf på maskinen som committer.
+* text=auto
+
+# Fixture-fila skal være byte-eksakt (UTF-16LE med BOM og CRLF, slik BankID preprod
+# lager filene sine), så git må ikke normalisere linjeskift i den.
+tests/Folkomaten.Tests/Fixtures/*.txt -text

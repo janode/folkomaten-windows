@@ -1,0 +1,72 @@
+<Window x:Class="Folkomaten.Views.SettingsWindow" x:ClassModifier="internal"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Innstillinger"
+        Width="460" SizeToContent="Height" ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        PreviewKeyDown="OnPreviewKeyDown">
+    <Window.Resources>
+        <Style x:Key="Heading" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="15" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+        </Style>
+        <Style x:Key="Caption" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="TextWrapping" Value="Wrap" />
+            <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}" />
+        </Style>
+        <Style x:Key="Monospace" TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}">
+            <Setter Property="FontFamily" Value="Cascadia Mono, Consolas" />
+        </Style>
+    </Window.Resources>
+
+    <StackPanel Margin="20">
+        <TextBlock Style="{StaticResource Heading}" Text="Hurtigtast" />
+        <DockPanel Margin="0,8,0,6">
+            <Button x:Name="HotkeyButton" DockPanel.Dock="Right" MinWidth="120" Click="OnHotkeyButtonClicked"
+                    FontFamily="Cascadia Mono, Consolas" ToolTip="Klikk for å endre hurtigtasten" />
+            <TextBlock Text="Åpne Folkomaten" VerticalAlignment="Center" />
+        </DockPanel>
+        <TextBlock Style="{StaticResource Caption}"
+                   Text="Virker overalt – også når ikonet er skjult i systemstatusfeltet. Endres med en gang du trykker ny kombinasjon (uavhengig av Lagre)." />
+
+        <Separator Margin="0,16" />
+
+        <TextBlock Style="{StaticResource Heading}" Text="Maskinporten" />
+
+        <TextBlock Style="{StaticResource Caption}" Text="Klient ID" Margin="0,12,0,4" />
+        <TextBox x:Name="ClientIdBox" Style="{StaticResource Monospace}" TextChanged="OnCredentialTextChanged" />
+
+        <TextBlock Style="{StaticResource Caption}" Text="Nøkkel-ID (kid)" Margin="0,12,0,4" />
+        <TextBox x:Name="KidBox" Style="{StaticResource Monospace}" />
+
+        <TextBlock Style="{StaticResource Caption}" Text="Privat nøkkel (PEM)" Margin="0,12,0,4" />
+        <TextBox x:Name="PrivateKeyBox" Style="{StaticResource Monospace}" FontSize="11" Height="120"
+                 AcceptsReturn="True" TextWrapping="NoWrap" VerticalContentAlignment="Top"
+                 VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"
+                 TextChanged="OnCredentialTextChanged" />
+
+        <Separator Margin="0,16" />
+
+        <TextBlock Style="{StaticResource Caption}" FontWeight="SemiBold" Text="Slik setter du opp:" />
+        <TextBlock Style="{StaticResource Caption}" Margin="0,4,0,0">
+            1. Opprett en klient i selvbetjeningen og legg til en generert nøkkel.<LineBreak />
+            2. Lim inn privatnøkkelen du får (PEM) i feltet over.<LineBreak />
+            3. Kopier Klient ID og Nøkkel-ID (kid) fra portalen.<LineBreak />
+            4. Klikk Lagre.
+        </TextBlock>
+        <TextBlock Style="{StaticResource Caption}" Margin="0,8,0,0">
+            <Hyperlink NavigateUri="https://sjolvbetjening.test.samarbeid.digdir.no/" RequestNavigate="OnLinkClicked">Åpne selvbetjeningen</Hyperlink>
+            <Run Text="   " />
+            <Hyperlink NavigateUri="https://skatteetaten.github.io/testnorge-tenor-dokumentasjon/" RequestNavigate="OnLinkClicked">Om Tenor-tilgang</Hyperlink>
+        </TextBlock>
+
+        <DockPanel Margin="0,20,0,0" LastChildFill="False">
+            <TextBlock x:Name="VersionText" DockPanel.Dock="Bottom" Style="{StaticResource Caption}"
+                       HorizontalAlignment="Center" Margin="0,12,0,0" />
+            <Button DockPanel.Dock="Left" Content="Avbryt" MinWidth="90" IsCancel="True" Click="OnCancelClicked" />
+            <Button x:Name="SaveButton" DockPanel.Dock="Right" Content="Lagre" MinWidth="90"
+                    Style="{DynamicResource AccentButtonStyle}" Click="OnSaveClicked" />
+        </DockPanel>
+    </StackPanel>
+</Window>

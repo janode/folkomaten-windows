@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net10.0-windows</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<IsPackable>false</IsPackable>
+		<OutputType>Exe</OutputType>
+		<NoWarn>$(NoWarn);xUnit1051</NoWarn>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="xunit.v3" Version="4.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Using Include="Xunit" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\src\Folkomaten.Core\Folkomaten.Core.csproj" />
+		<ProjectReference Include="..\..\src\Folkomaten\Folkomaten.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="Fixtures\*.txt" CopyToOutputDirectory="PreserveNewest" />
+	</ItemGroup>
+
+</Project>

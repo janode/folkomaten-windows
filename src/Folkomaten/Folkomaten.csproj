@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net10.0-windows</TargetFramework>
+		<UseWPF>true</UseWPF>
+		<!-- Bare for tray-ikonet (NotifyIcon); WPF har ikke noe eget. -->
+		<UseWindowsForms>true</UseWindowsForms>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<ApplicationIcon>Assets\folkomaten.ico</ApplicationIcon>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<!-- Det samme ikonet lastes inn ved kjøring for trayen. -->
+		<Resource Include="Assets\folkomaten.ico" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<!-- Hold WinForms-navnerommene eksplisitte så de ikke kolliderer med WPF-typene. -->
+		<Using Remove="System.Windows.Forms" />
+		<Using Remove="System.Drawing" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Folkomaten.Core\Folkomaten.Core.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<InternalsVisibleTo Include="Folkomaten.Tests" />
+	</ItemGroup>
+
+</Project>
