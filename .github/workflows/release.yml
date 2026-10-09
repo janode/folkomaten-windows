@@ -60,3 +60,15 @@ jobs:
             publish/Folkomaten-win-x64-lite.exe
             publish/SHA256SUMS.txt
           generate_release_notes: true
+
+  # Sender den nye versjonen til winget-pkgs (pakken JanOdegard.Folkomaten). Krever at
+  # pakken allerede finnes der, og en classic PAT (public_repo + workflow) i secret WINGET_TOKEN.
+  winget:
+    needs: release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: vedantmgoyal9/winget-releaser@v2
+        with:
+          identifier: JanOdegard.Folkomaten
+          installers-regex: 'Folkomaten-win-x64\.exe$'
+          token: ${{ secrets.WINGET_TOKEN }}
