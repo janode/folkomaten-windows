@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="256" viewBox="0 0 1040 256">
+  <!-- Folkomaten for Windows: merke (samme som app-ikonet) + ordmerke -->
+  <defs>
+    <clipPath id="card"><rect width="256" height="256" rx="56"/></clipPath>
+  </defs>
+  <g clip-path="url(#card)">
+    <rect width="256" height="256" fill="#005FB8"/>
+    <circle cx="74" cy="87" r="26" fill="#fff"/>
+    <path d="M28 133 h92 v10 a46 46 0 0 1 -92 0 z" fill="#fff"/>
+    <g stroke="#fff" stroke-width="18" stroke-linecap="round">
+      <line x1="143" y1="82" x2="210" y2="82"/>
+      <line x1="143" y1="128" x2="210" y2="128"/>
+      <line x1="143" y1="174" x2="210" y2="174"/>
+    </g>
+  </g>
+  <text x="312" y="140" font-family="Segoe UI, Inter, Helvetica Neue, Arial, sans-serif" font-size="128" font-weight="600" fill="#1B1B1F" letter-spacing="-3">Folkomaten</text>
+  <text x="316" y="206" font-family="Segoe UI, Inter, Helvetica Neue, Arial, sans-serif" font-size="46" font-weight="400" fill="#005FB8" letter-spacing="1">for Windows</text>
+</svg>

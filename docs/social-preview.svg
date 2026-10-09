@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640">
+  <!-- GitHub social preview (1280x640) -->
+  <defs>
+    <clipPath id="card"><rect width="256" height="256" rx="56"/></clipPath>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F3F6FB"/>
+      <stop offset="1" stop-color="#E4ECF7"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="640" fill="url(#bg)"/>
+  <!-- svak kortskygge bak merket -->
+  <rect x="120" y="150" width="272" height="272" rx="62" fill="#005FB8" opacity="0.12" transform="translate(8 14)"/>
+  <g transform="translate(128 158) scale(1.0625)">
+    <g clip-path="url(#card)">
+      <rect width="256" height="256" fill="#005FB8"/>
+      <circle cx="74" cy="87" r="26" fill="#fff"/>
+      <path d="M28 133 h92 v10 a46 46 0 0 1 -92 0 z" fill="#fff"/>
+      <g stroke="#fff" stroke-width="18" stroke-linecap="round">
+        <line x1="143" y1="82" x2="210" y2="82"/>
+        <line x1="143" y1="128" x2="210" y2="128"/>
+        <line x1="143" y1="174" x2="210" y2="174"/>
+      </g>
+    </g>
+  </g>
+  <g font-family="Segoe UI, Inter, Helvetica Neue, Arial, sans-serif">
+    <text x="464" y="296" font-size="112" font-weight="600" fill="#1B1B1F" letter-spacing="-2.5">Folkomaten</text>
+    <text x="468" y="352" font-size="40" font-weight="400" fill="#005FB8" letter-spacing="1">for Windows</text>
+    <text x="468" y="430" font-size="30" fill="#4A4F5A">Kopier fødselsnummeret til en BankID-testbruker</text>
+    <text x="468" y="472" font-size="30" fill="#4A4F5A">med ett klikk, rett fra systemstatusfeltet.</text>
+  </g>
+  <text x="1232" y="596" font-family="Consolas, Cascadia Mono, monospace" font-size="24" fill="#6B7280" text-anchor="end">github.com/janode/folkomaten-windows</text>
+</svg>
